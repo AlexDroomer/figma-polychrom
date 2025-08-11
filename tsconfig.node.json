@@ -3,8 +3,19 @@
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "exclude": ["src/ui/coverage/**"],
+  "include": ["vite.config.ui.ts"]
 }

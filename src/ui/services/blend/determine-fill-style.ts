@@ -1,4 +1,5 @@
-import { type FigmaColorSpace, type FigmaPaint } from '~types/figma.ts';
+import type { FigmaColorSpace, FigmaPaint } from '~types/figma.ts';
+
 import { isSupportsOKLCH } from '~ui/constants.ts';
 import { formatHex } from 'culori/fn';
 

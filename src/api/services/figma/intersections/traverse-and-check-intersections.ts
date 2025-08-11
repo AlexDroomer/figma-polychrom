@@ -1,5 +1,6 @@
+import type { PolychromNode } from '~types/common.ts';
+
 import { createPolychromNode } from '~api/services/figma/nodes/create-polychrom-node.ts';
-import { type PolychromNode } from '~types/common.ts';
 
 import { areNodesIntersecting } from './are-nodes-intersecting.ts';
 import { getSiblingsThatAreBelowByZIndex } from './get-siblings-that-are-below-by-z-index.ts';
@@ -7,17 +8,14 @@ import { getSiblingsThatAreBelowByZIndex } from './get-siblings-that-are-below-b
 const ifSelectedNodeIsChild = (
   node: SceneNode,
   selectedNode: SceneNode
-): boolean => {
-  return (
+): boolean => (
     'children' in node && node.children.some((n) => n.id === selectedNode.id)
   );
-};
 
 export const traverseAndCheckIntersections = (
   nodes: SceneNode[],
   selectedNode: SceneNode
-): PolychromNode[] => {
-  return nodes.reduce((accumulator: PolychromNode[], node) => {
+): PolychromNode[] => nodes.reduce((accumulator: PolychromNode[], node) => {
     if (areNodesIntersecting(node, selectedNode)) {
       const polychromNode = createPolychromNode(node, selectedNode.id);
 
@@ -37,4 +35,3 @@ export const traverseAndCheckIntersections = (
 
     return accumulator;
   }, []);
-};

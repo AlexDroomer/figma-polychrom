@@ -1,8 +1,9 @@
+import type { PolychromNode } from '~types/common.ts';
+
 import { getIntersectingNodes } from '~api/services/figma/intersections/get-intersecting-nodes.ts';
 import { hasOnlyValidBlendModes } from '~api/services/figma/nodes/has-only-valid-blend-modes.ts';
 import { isValidForBackground } from '~api/services/figma/nodes/is-valid-for-background.ts';
 import { isValidForSelection } from '~api/services/figma/nodes/is-valid-for-selection.ts';
-import { type PolychromNode } from '~types/common.ts';
 import {
   type SelectionChangeEvent,
   SelectionMessageTypes,
@@ -16,13 +17,11 @@ enum PairState {
 
 const isValidSelection = (
   pair: PairState | PolychromNode
-): pair is PolychromNode => {
-  return (
+): pair is PolychromNode => (
     notEmpty(pair) &&
     pair !== PairState.InvalidBackground &&
     pair !== PairState.InvalidBlendMode
   );
-};
 
 export const buildGeneralSelectionPayload = (
   selection: readonly SceneNode[]

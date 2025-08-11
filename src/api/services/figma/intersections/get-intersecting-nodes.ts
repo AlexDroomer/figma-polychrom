@@ -1,7 +1,8 @@
+import type { PolychromNode } from '~types/common.ts';
+
 import { getSiblingsThatAreBelowByZIndex } from '~api/services/figma/intersections/get-siblings-that-are-below-by-z-index.ts';
 import { traverseAndCheckIntersections } from '~api/services/figma/intersections/traverse-and-check-intersections.ts';
 import { createPolychromNode } from '~api/services/figma/nodes/create-polychrom-node.ts';
-import { type PolychromNode } from '~types/common.ts';
 
 export const getIntersectingNodes = (
   selectedNode: SceneNode

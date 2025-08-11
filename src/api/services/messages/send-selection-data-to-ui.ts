@@ -16,6 +16,8 @@ export const sendSelectionDataToUi = (): void => {
       payload: messagePayload,
       type: MessageTypes.SelectionChange,
     } satisfies MessagePayload<SelectionChangeEvent>);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     figma.ui.postMessage({
       payload: {

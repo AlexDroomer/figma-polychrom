@@ -1,4 +1,5 @@
-import { type FigmaColorSpace } from '~types/figma.ts';
+import type { FigmaColorSpace } from '~types/figma.ts';
+
 import { convertDecimalRGBto255Scale } from '~utils/colors/formatters.ts';
 import { APCAcontrast, displayP3toY, sRGBtoY } from 'apca-w3';
 

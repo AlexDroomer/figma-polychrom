@@ -1,6 +1,7 @@
+import type { PolychromNode } from '~types/common.ts';
+
 import { collectNodeParents } from '~api/services/figma/nodes/collect-node-parents.ts';
 import { getNodeFills } from '~api/services/figma/nodes/get-node-fills.ts';
-import { type PolychromNode } from '~types/common.ts';
 import { formatHex, modeOklch, useMode } from 'culori/fn';
 
 const convertToOklch = useMode(modeOklch)
@@ -33,8 +34,6 @@ export const createPolychromNode = (
     opacity: 'opacity' in node ? node.opacity : 1,
     parents,
     visible: 'visible' in node ? node.visible : true,
-    zIndex: node.parent?.children.findIndex((child) => {
-      return child.id === node.id;
-    }),
+    zIndex: node.parent?.children.findIndex((child) => child.id === node.id),
   };
 };

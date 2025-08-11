@@ -1,4 +1,5 @@
-import { type FigmaPaint } from '~types/figma.ts';
+import type { FigmaPaint } from '~types/figma.ts';
+
 import { notEmpty } from '~utils/not-empty.ts';
 
 export const isVisibleSolidFill = (fill: FigmaPaint): boolean =>

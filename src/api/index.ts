@@ -22,7 +22,9 @@ figma.on('close', () => {
   figma.off('documentchange', sendSelectionDataToUi);
 });
 
-figma.ui.onmessage = (message: MessagePayload<any>) => {
+figma.ui.onmessage = (
+  message: MessagePayload<{ colorSpaceDisplayMode: string }>
+) => {
   if (message.type === MessageTypes.ColorSpaceDisplayModeChange) {
     void figma.clientStorage.setAsync(
       ClientStorageKeys.savedColorSpaceDisplayMode,

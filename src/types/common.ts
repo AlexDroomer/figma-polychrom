@@ -1,10 +1,5 @@
-import { type FigmaPaint } from '~types/figma.ts';
-import { type Oklch } from 'culori/fn';
-
-export interface UIColor {
-  hex: string;
-  oklch: Oklch;
-}
+import type { FigmaPaint } from '~types/figma.ts';
+import type { Oklch } from 'culori/fn';
 
 export interface PolychromNode {
   blendMode: BlendMode;
@@ -18,4 +13,9 @@ export interface PolychromNode {
   parents: readonly SceneNode[];
   visible?: boolean;
   zIndex?: number;
+}
+
+export interface UIColor {
+  hex: string;
+  oklch: Oklch;
 }

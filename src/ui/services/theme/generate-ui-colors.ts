@@ -1,4 +1,5 @@
-import { type UIColor } from '~types/common.ts';
+import type { UIColor } from '~types/common.ts';
+
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';
 import { calcAPCA } from 'apca-w3';
 import {
@@ -15,14 +16,6 @@ const minLc = 60;
 const toleranceLc = 4;
 const borderLcThreshold = 10;
 
-export interface WidgetProps {
-  debug: string;
-  Lc: number;
-  oklchBg: Oklch;
-  oklchFg: Oklch;
-  theme: Theme;
-}
-
 export interface Theme {
   bg: UIColor;
   bgBorder: null | UIColor;
@@ -33,6 +26,14 @@ export interface Theme {
   secondary: UIColor;
 }
 
+export interface WidgetProps {
+  debug: string;
+  Lc: number;
+  oklchBg: Oklch;
+  oklchFg: Oklch;
+  theme: Theme;
+}
+
 const fixHue = (oklchColor: null | Oklch): null | Oklch => {
   if (isEmpty(oklchColor)) return null;
 
@@ -40,15 +41,13 @@ const fixHue = (oklchColor: null | Oklch): null | Oklch => {
   return oklchColor;
 };
 
-const apcachToCulori = (apcachColor: ApcachColor): Oklch => {
-  return {
+const apcachToCulori = (apcachColor: ApcachColor): Oklch => ({
     alpha: apcachColor.alpha,
     c: apcachColor.chroma,
     h: apcachColor.hue,
     l: apcachColor.lightness,
     mode: 'oklch',
-  };
-};
+  });
 
 const transformFgColor = (colorFg: UIColor, colorBg: UIColor): UIColor => {
   const { oklch: oklchFg } = colorFg;
@@ -209,9 +208,7 @@ const getSecondaryColor = (colorBg: UIColor): UIColor => {
 };
 
 const getThemeWithMaxLc = (themes: Theme[]): null | Theme => {
-  const Lcs = themes.map((theme) => {
-    return theme.Lc;
-  });
+  const Lcs = themes.map((theme) => theme.Lc);
 
   const max = Math.max(...Lcs);
 
