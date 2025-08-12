@@ -2,7 +2,6 @@ import { useStore } from '@nanostores/react';
 import { RewardingAnimationBodyText } from '~ui/components/RewardingAnimationBodyText.tsx';
 import { RewardingAnimationContentText } from '~ui/components/RewardingAnimationContentText.tsx';
 import { RewardingAnimationFluentText } from '~ui/components/RewardingAnimationFluentText.tsx';
-import { ThemeVariablesKeys } from '~ui/components/ThemeVariablesProvider.tsx';
 import { conclusions } from '~ui/services/apca/conclusion.ts';
 import { $rewardAnimationLaunch } from '~ui/stores/selected-nodes.ts';
 import { isEmpty } from '~utils/not-empty.ts';
@@ -29,30 +28,21 @@ export const ProgressBar = ({ apca, height }: Props): ReactElement => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center">
-        <span
-          style={{
-            color: `var(${ThemeVariablesKeys.secondary})`,
-          }}
-          className="mr-2 text-xxs"
-        >
-          0
-        </span>
+        <span className="mr-2 text-xxs text-polychrom-theme-secondary">0</span>
 
         <div
           style={{
-            backgroundColor: `var(${ThemeVariablesKeys.secondary12})`,
             height: `${height}px`,
             width: barWidth,
           }}
-          className="relative rounded-full"
+          className="relative rounded-full bg-polychrom-theme-secondary-12"
         >
           <div
             style={{
-              backgroundImage: `linear-gradient(to right, var(${ThemeVariablesKeys.fg70}) 70%, var(${ThemeVariablesKeys.fg}) 85%)`,
               height: `${height}px`,
               width: filledSegmentWidth,
             }}
-            className="rounded-full"
+            className="rounded-full bg-gradient-to-r from-polychrom-theme-fg-70 from-70% to-polychrom-theme-fg to-85%"
           />
 
           <div>
@@ -69,14 +59,10 @@ export const ProgressBar = ({ apca, height }: Props): ReactElement => {
               return (
                 <div
                   className={clsx(
-                    'absolute top-1/2 w-px -translate-y-1/2',
+                    'absolute top-1/2 w-px -translate-y-1/2 bg-polychrom-theme-bg',
                     isContextText ? 'h-1' : 'h-0.5'
                   )}
                   style={{
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-expect-error
-                    '--color-sparkles': `var(${ThemeVariablesKeys.fg})`,
-                    backgroundColor: `var(${ThemeVariablesKeys.bg})`,
                     left: position,
                   }}
                   key={i}
@@ -101,10 +87,7 @@ export const ProgressBar = ({ apca, height }: Props): ReactElement => {
         </div>
 
         <span
-          style={{
-            color: `var(${ThemeVariablesKeys.secondary})`,
-          }}
-          className="ml-2 text-xxs"
+          className="ml-2 text-xxs text-polychrom-theme-secondary"
         >
           {maxScale}
         </span>

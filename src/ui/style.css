@@ -12,6 +12,19 @@
     --universal-25: rgba(174, 174, 174, 0.58);
     --secondary-35: rgba(111, 111, 111, 0.35);
     --secondary-75: rgba(111, 111, 111, 1);
+    --polychrom-theme-bg: #e5e5e5;
+    --polychrom-theme-bg-border: #6e6e6e;
+    --polychrom-theme-border-original: #6e6e6e;
+    --polychrom-theme-fg: #6e6e6e;
+    --polychrom-theme-fg-24: #6e6e6e3d;
+    --polychrom-theme-fg-70: #6e6e6eb3;
+    --polychrom-theme-fg-border: #ffffff;
+    --polychrom-theme-secondary: #6e6e6e;
+    --polychrom-theme-secondary-12: #6e6e6e1f;
+    --polychrom-theme-secondary-16: #6e6e6e29;
+    --polychrom-theme-secondary-24: #6e6e6e3d;
+    --color-sparkles: var(--polychrom-theme-fg);
+    --text-shadow-color: var(--polychrom-theme-fg-24);
   }
 
   :root[class~='dark'] {

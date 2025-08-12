@@ -39,10 +39,7 @@ export const App: React.FC = () => {
             <Tooltip>
               <TooltipTrigger>
                 <div
-                  style={{
-                    mixBlendMode: 'difference',
-                  }}
-                  className="flex items-center"
+                  className="flex items-center mix-blend-difference"
                 >
                   <p className="mr-3 rounded border-0.5 border-secondary-75 p-1 text-xxxs font-medium leading-[8px] text-secondary-75">
                     P3

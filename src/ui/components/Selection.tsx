@@ -1,5 +1,4 @@
 import {
-  ThemeVariablesKeys,
   ThemeVariablesProvider,
 } from '~ui/components/ThemeVariablesProvider.tsx';
 import { type ContrastConclusion } from '~ui/types';
@@ -65,14 +64,11 @@ export const Selection = ({
     <ThemeVariablesProvider theme={uiColors.theme}>
       <div
         className={clsx(
-          'w-full rounded-2.5xl',
+          'w-full rounded-2.5xl bg-polychrom-theme-bg',
           size === 'small' && isLast === false && 'px-5 pb-8 pt-2',
           size === 'small' && isLast === true && 'px-5 py-3',
           size === 'large' && 'p-5'
         )}
-        style={{
-          backgroundColor: `var(${ThemeVariablesKeys.bg})`,
-        }}
       >
         <SegmentedFontStyleDefinition
           currentStyleNumber={currentStyleNumber}

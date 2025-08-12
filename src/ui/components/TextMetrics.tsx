@@ -1,4 +1,3 @@
-import { ThemeVariablesKeys } from '~ui/components/ThemeVariablesProvider.tsx';
 import { conclusions } from '~ui/services/apca/conclusion.ts';
 import { fontLookupAPCA } from 'apca-w3';
 import { type ReactElement } from 'react';
@@ -27,30 +26,15 @@ export const TextMetrics = ({ apca }: Props): ReactElement => {
   }
 
   return (
-    <div
-      style={{
-        color: `var(${ThemeVariablesKeys.fg})`,
-      }}
-      className="flex items-center"
-    >
+    <div className="flex items-center text-polychrom-theme-fg">
       <div className="mr-3 flex items-center">
-        <p
-          style={{
-            borderColor: `var(${ThemeVariablesKeys.fg})`,
-          }}
-          className="mr-2 rounded border-0.5 p-1 text-xxxs font-medium leading-[8px]"
-        >
+        <p className="mr-2 rounded border-0.5 border-polychrom-theme-fg p-1 text-xxxs font-medium leading-[8px]">
           Rg
         </p>
         <p className="text-xxs leading-none">{regular}px</p>
       </div>
       <div className="flex items-center">
-        <p
-          style={{
-            borderColor: `var(${ThemeVariablesKeys.fg})`,
-          }}
-          className="mr-2 rounded border-0.5 p-1 text-xxxs font-medium leading-[8px]"
-        >
+        <p className="mr-2 rounded border-0.5 border-polychrom-theme-fg p-1 text-xxxs font-medium leading-[8px]">
           Bd
         </p>
         <p className="text-xxs leading-none">{bold}px</p>

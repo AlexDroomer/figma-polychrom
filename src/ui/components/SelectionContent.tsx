@@ -1,7 +1,3 @@
-import {
-  formatColorForTheme,
-  ThemeVariablesKeys,
-} from '~ui/components/ThemeVariablesProvider.tsx';
 import { getConclusionByScore } from '~ui/services/apca/conclusion.ts';
 import { type ContrastConclusion } from '~ui/types';
 import clsx from 'clsx';
@@ -27,23 +23,15 @@ export const SelectionContent = ({
   onApcaDoubleClick,
   size,
 }: Props): ReactElement => {
-  const bgColor = formatColorForTheme(bg);
-  const fgColor = formatColorForTheme(fg);
-
   return (
-    <div className="relative grid h-full w-full">
+    <div className="relative grid size-full">
       <div
         className={clsx(
           size === 'small' ? 'mb-1' : 'mb-5',
           'flex items-center justify-between'
         )}
       >
-        <p
-          style={{
-            color: `var(${ThemeVariablesKeys.fg})`,
-          }}
-          className="text-xxs"
-        >
+        <p className="text-xxs text-polychrom-theme-fg">
           {getConclusionByScore(Math.abs(apca))}
         </p>
 
@@ -59,7 +47,7 @@ export const SelectionContent = ({
         )}
       >
         <div className="shrink-0 grow">
-          <ContrastSample bgColor={bgColor} color={fgColor} size={size} />
+          <ContrastSample size={size} />
         </div>
 
         <div
@@ -67,11 +55,6 @@ export const SelectionContent = ({
             size === 'small' ? 'mr-9 text-5xl' : 'mr-13 text-7xl',
             `segmented-${id} w-full text-center leading-none text-shadow`
           )}
-          style={{
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            '--text-shadow-color': `var(${ThemeVariablesKeys.fg24})`,
-          }}
         >
           <h1 className="inline text-shadow" onDoubleClick={onApcaDoubleClick}>
             {Math.abs(apca)}
@@ -93,19 +76,15 @@ export const SelectionContent = ({
         {size === 'large' && (
           <div className="flex items-center justify-between text-xxs">
             <ColorIndicator
-              borderColor={ThemeVariablesKeys.fgBorder}
               fill={fg}
-              indicatorColor={fgColor}
+              indicatorType="foreground"
               isBlended={fg.isBlended}
-              textColor={ThemeVariablesKeys.fg}
             />
 
             <ColorIndicator
-              borderColor={ThemeVariablesKeys.bgBorder}
               fill={bg}
-              indicatorColor={bgColor}
+              indicatorType="background"
               isBlended={bg.isBlended}
-              textColor={ThemeVariablesKeys.secondary}
             />
           </div>
         )}

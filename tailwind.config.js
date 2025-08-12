@@ -37,6 +37,18 @@ module.exports = {
       transparent: 'transparent',
       indicatorsHover: 'var(--indicators-hover)',
       indicatorsActive: 'var(--indicators-active)',
+      'polychrom-theme-bg': 'var(--polychrom-theme-bg)',
+      'polychrom-theme-bg-border': 'var(--polychrom-theme-bg-border)',
+      'polychrom-theme-border-original':
+        'var(--polychrom-theme-border-original)',
+      'polychrom-theme-fg': 'var(--polychrom-theme-fg)',
+      'polychrom-theme-fg-24': 'var(--polychrom-theme-fg-24)',
+      'polychrom-theme-fg-70': 'var(--polychrom-theme-fg-70)',
+      'polychrom-theme-fg-border': 'var(--polychrom-theme-fg-border)',
+      'polychrom-theme-secondary': 'var(--polychrom-theme-secondary)',
+      'polychrom-theme-secondary-12': 'var(--polychrom-theme-secondary-12)',
+      'polychrom-theme-secondary-16': 'var(--polychrom-theme-secondary-16)',
+      'polychrom-theme-secondary-24': 'var(--polychrom-theme-secondary-24)',
       elevation: {
         1: 'var(--elevation-1)',
       },

@@ -3,31 +3,21 @@ import { LayeredColorPreviewIcon } from '~ui/components/LayeredColorPreviewIcon.
 import { type ReactElement } from 'react';
 
 interface Props {
-  borderColor: string;
-  indicatorColor: string;
+  indicatorType: 'background' | 'foreground';
   isBlended: boolean;
 }
 
 export const ColorPreview = ({
-  borderColor,
-  indicatorColor,
+  indicatorType,
   isBlended,
 }: Props): ReactElement => {
   if (isBlended) {
     return (
       <div className="flex">
-        <LayeredColorPreviewIcon
-          borderColor={borderColor}
-          indicatorColor={indicatorColor}
-        />
+        <LayeredColorPreviewIcon indicatorType={indicatorType} />
       </div>
     );
   }
 
-  return (
-    <BasicColorPreviewIcon
-      borderColor={borderColor}
-      indicatorColor={indicatorColor}
-    />
-  );
+  return <BasicColorPreviewIcon indicatorType={indicatorType} />;
 };

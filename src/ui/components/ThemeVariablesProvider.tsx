@@ -4,7 +4,7 @@ import { type Theme } from '~ui/services/theme/generate-ui-colors.ts';
 import { formatForOklchCSS } from '~utils/colors/formatters.ts';
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';
 import { formatHex8 } from 'culori/fn';
-import { type ReactElement } from 'react';
+import { type ReactElement, useEffect } from 'react';
 
 interface Props {
   children: ReactElement;
@@ -46,36 +46,54 @@ export const ThemeVariablesProvider = ({
   children,
   theme,
 }: Props): ReactElement => {
-  const styles = {
-    [ThemeVariablesKeys.bg]: formatColorForTheme(theme.bg),
-    [ThemeVariablesKeys.bgBorder]: formatColorForTheme(theme.bgBorder),
-    [ThemeVariablesKeys.borderOriginal]: formatColorForTheme(
-      theme.borderOriginal
-    ),
-    [ThemeVariablesKeys.fg]: formatColorForTheme(theme.fg),
-    [ThemeVariablesKeys.fg24]: formatColorForTheme(theme.fg, 0.24),
-    [ThemeVariablesKeys.fg70]: formatColorForTheme(theme.fg, 0.7),
-    [ThemeVariablesKeys.fgBorder]: formatColorForTheme(theme.fgBorder),
-    [ThemeVariablesKeys.secondary]: formatColorForTheme(theme.secondary),
-    [ThemeVariablesKeys.secondary12]: formatColorForTheme(
-      theme.secondary,
-      0.12
-    ),
-    [ThemeVariablesKeys.secondary16]: formatColorForTheme(
-      theme.secondary,
-      0.16
-    ),
-    [ThemeVariablesKeys.secondary24]: formatColorForTheme(
-      theme.secondary,
-      0.24
-    ),
-  };
+  useEffect(() => {
+    const root = document.documentElement;
 
-  return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    <div className="w-full" style={styles}>
-      {children}
-    </div>
-  );
+    root.style.setProperty(
+      ThemeVariablesKeys.bg,
+      formatColorForTheme(theme.bg)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.bgBorder,
+      formatColorForTheme(theme.bgBorder)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.borderOriginal,
+      formatColorForTheme(theme.borderOriginal)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.fg,
+      formatColorForTheme(theme.fg)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.fg24,
+      formatColorForTheme(theme.fg, 0.24)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.fg70,
+      formatColorForTheme(theme.fg, 0.7)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.fgBorder,
+      formatColorForTheme(theme.fgBorder)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.secondary,
+      formatColorForTheme(theme.secondary)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.secondary12,
+      formatColorForTheme(theme.secondary, 0.12)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.secondary16,
+      formatColorForTheme(theme.secondary, 0.16)
+    );
+    root.style.setProperty(
+      ThemeVariablesKeys.secondary24,
+      formatColorForTheme(theme.secondary, 0.24)
+    );
+  }, [theme]);
+
+  return <div className="w-full">{children}</div>;
 };
