@@ -12,34 +12,40 @@ import {
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';
 import { atom, computed, map, onMount, onSet } from 'nanostores';
 
-export const $userSelection = atom<SelectionChangeEvent>({
+export const userSelection = atom<SelectionChangeEvent>({
   colorSpace: 'SRGB',
   selectedNodePairs: [],
 });
 
-export const $contrastConclusion = atom<ContrastConclusionList>([]);
+export const contrastConclusion = atom<ContrastConclusionList>([]);
 
-export const $isP3 = computed($userSelection, (selection) => {
+export const isP3 = computed(userSelection, (selection) => {
   return 'colorSpace' in selection
     ? selection.colorSpace === 'DISPLAY_P3'
     : false;
 });
 
-export const $isMultiSelection = computed($userSelection, (selection) => {
+export const isMultiSelection = computed(userSelection, (selection) => {
   return 'selectedNodePairs' in selection
     ? selection.selectedNodePairs.length > 1
     : false;
 });
 
-export const $isInvalidBackground = computed($userSelection, (selection) => {
+export const isSingleSelection = computed(userSelection, (selection) => {
+  return 'selectedNodePairs' in selection
+    ? selection.selectedNodePairs.length === 1
+    : false;
+});
+
+export const isInvalidBackground = computed(userSelection, (selection) => {
   return (
     'text' in selection &&
     selection.text === SelectionMessageTypes.invalidBackground
   );
 });
 
-export const $isUnprocessedBlendModes = computed(
-  $userSelection,
+export const isUnprocessedBlendModes = computed(
+  userSelection,
   (selection) => {
     return (
       'text' in selection &&
@@ -48,17 +54,17 @@ export const $isUnprocessedBlendModes = computed(
   }
 );
 
-export const $isEmptySelection = computed(
-  $contrastConclusion,
-  (selection) => selection?.length === 0
+export const isEmptySelection = computed(
+  contrastConclusion,
+  (selection) => selection.length === 0
 );
 
-onMount($userSelection, () => {
-  const addMessageListener = (
+onMount(userSelection, () => {
+  let addMessageListener = (
     event: MessageEvent<Message<SelectionChangeEvent>>
   ): void => {
-    if (event.data?.pluginMessage.type === MessageTypes.SelectionChange) {
-      $userSelection.set(event.data.pluginMessage.payload);
+    if (event.data.pluginMessage.type === MessageTypes.SelectionChange) {
+      userSelection.set(event.data.pluginMessage.payload);
     }
   };
 
@@ -69,28 +75,29 @@ onMount($userSelection, () => {
   };
 });
 
-onSet($contrastConclusion, ({ newValue }) => {
+onSet(contrastConclusion, ({ newValue }) => {
   if (isEmpty(newValue)) return;
 
   setRewardAnimationLaunch(newValue);
 });
 
-onSet($userSelection, ({ newValue }) => {
-  const start = async (): Promise<void> => {
+onSet(userSelection, ({ newValue }) => {
+  let start = async (): Promise<void> => {
     if ('selectedNodePairs' in newValue) {
-      const res = await blendColors(
+      let res = await blendColors(
         newValue.selectedNodePairs,
         newValue.colorSpace
       );
 
-      if (notEmpty(res)) $contrastConclusion.set(res);
+      if (notEmpty(res)) contrastConclusion.set(res);
     }
   };
 
+   
   void start();
 });
 
-export const $rewardAnimationLaunch = map<{
+export const rewardAnimationLaunch = map<{
   bodyText: boolean | null;
   contentText: boolean | null;
   fluentText: boolean | null;
@@ -103,25 +110,25 @@ export const $rewardAnimationLaunch = map<{
 const setRewardAnimationLaunch = (
   contrastConclusionList: ContrastConclusionList
 ): void => {
-  const prevId = $contrastConclusion.get()?.[0]?.id;
-  const newId = contrastConclusionList?.[0]?.id;
-  const prevApca = $contrastConclusion.get()?.[0]?.apca;
-  const newApca = contrastConclusionList?.[0]?.apca;
+  let prevId = contrastConclusion.get()[0]?.id;
+  let newId = contrastConclusionList[0]?.id;
+  let prevApca = contrastConclusion.get()[0]?.apca;
+  let newApca = contrastConclusionList[0]?.apca;
 
   if (isEmpty(newId) || isEmpty(prevId) || newId !== prevId) return;
   if (isEmpty(newApca) || isEmpty(prevApca)) return;
 
-  const formattedPrevApca = Math.abs(prevApca);
-  const formattedNewApca = Math.abs(newApca);
+  let formattedPrevApca = Math.abs(prevApca);
+  let formattedNewApca = Math.abs(newApca);
 
   if (
     formattedPrevApca < conclusions['Content Text'] &&
     formattedNewApca >= conclusions['Content Text']
   ) {
-    $rewardAnimationLaunch.setKey('contentText', true);
+    rewardAnimationLaunch.setKey('contentText', true);
 
     setTimeout(() => {
-      $rewardAnimationLaunch.setKey('contentText', null);
+      rewardAnimationLaunch.setKey('contentText', null);
     }, 1000);
   }
 
@@ -129,10 +136,10 @@ const setRewardAnimationLaunch = (
     formattedPrevApca < conclusions['Body Text'] &&
     formattedNewApca >= conclusions['Body Text']
   ) {
-    $rewardAnimationLaunch.setKey('bodyText', true);
+    rewardAnimationLaunch.setKey('bodyText', true);
 
     setTimeout(() => {
-      $rewardAnimationLaunch.setKey('bodyText', null);
+      rewardAnimationLaunch.setKey('bodyText', null);
     }, 1000);
   }
 
@@ -140,10 +147,10 @@ const setRewardAnimationLaunch = (
     formattedPrevApca < conclusions['Fluent Text'] &&
     formattedNewApca >= conclusions['Fluent Text']
   ) {
-    $rewardAnimationLaunch.setKey('fluentText', true);
+    rewardAnimationLaunch.setKey('fluentText', true);
 
     setTimeout(() => {
-      $rewardAnimationLaunch.setKey('fluentText', null);
+      rewardAnimationLaunch.setKey('fluentText', null);
     }, 1000);
   }
 };

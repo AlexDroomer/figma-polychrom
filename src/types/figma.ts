@@ -1,4 +1,4 @@
-import { type UIColor } from '~types/common.ts';
+import type { UIColor } from '~types/common.ts';
 
 export type FigmaPaint = Paint | (SolidPaint & UIColor);
 

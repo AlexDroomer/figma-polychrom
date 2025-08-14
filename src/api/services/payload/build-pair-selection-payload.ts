@@ -19,10 +19,10 @@ export const buildPairSelectionPayload = (
   const [firstNode, secondNode] = selection;
 
   if (isEmpty(firstNode) || isEmpty(secondNode))
-    return {
+    {return {
       colorSpace: figma.root.documentColorProfile,
       selectedNodePairs: [],
-    };
+    };}
 
   const firstPolychromNode = createPolychromNode(firstNode);
   const secondPolychromNode = createPolychromNode(secondNode);
@@ -33,10 +33,10 @@ export const buildPairSelectionPayload = (
   ]);
 
   if (isEmpty(fg) || isEmpty(bg))
-    return {
+    {return {
       colorSpace: figma.root.documentColorProfile,
       selectedNodePairs: [],
-    };
+    };}
 
   const fgSceneNode = fg.id === firstPolychromNode.id ? firstNode : secondNode;
   const bgSceneNode = bg.id === firstPolychromNode.id ? firstNode : secondNode;
@@ -56,10 +56,10 @@ export const buildPairSelectionPayload = (
   }
 
   if (!isValidForSelection(fgSceneNode))
-    return {
+    {return {
       colorSpace: figma.root.documentColorProfile,
       selectedNodePairs: [],
-    };
+    };}
 
   // return synthetic pair of separate collected nodes for the bg and fg
   // this is the case when the user selects two nodes and wants to build contrast between them

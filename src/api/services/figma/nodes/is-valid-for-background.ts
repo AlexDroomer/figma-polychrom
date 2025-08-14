@@ -1,4 +1,4 @@
-import { type PolychromNode } from '~types/common.ts';
+import type { PolychromNode } from '~types/common.ts';
 import { flattenPolychromNodesTree } from '~utils/figma/flatten-polychrom-nodes-tree.ts';
 import { getActualFill } from '~utils/figma/get-actual-fill.ts';
 import { getActualNode } from '~utils/figma/get-actual-node.ts';
@@ -20,7 +20,7 @@ export const isValidForBackground = (nodesTree: PolychromNode): boolean => {
 
   if (isEmpty(actualNode)) return false;
 
-  const actualFill = getActualFill(actualNode?.fills);
+  const actualFill = getActualFill(actualNode.fills);
 
   if (isEmpty(actualFill)) return false;
 

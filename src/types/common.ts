@@ -1,5 +1,5 @@
-import { type FigmaPaint } from '~types/figma.ts';
-import { type Oklch } from 'culori/fn';
+import type { FigmaPaint } from '~types/figma.ts';
+import type { Oklch } from 'culori/fn';
 
 export interface UIColor {
   hex: string;

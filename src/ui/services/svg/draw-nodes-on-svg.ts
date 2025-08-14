@@ -1,5 +1,5 @@
-import { type PolychromNode } from '~types/common.ts';
-import { type FigmaColorSpace } from '~types/figma.ts';
+import type { PolychromNode } from '~types/common.ts';
+import type { FigmaColorSpace } from '~types/figma.ts';
 import { mapFigmaBlendToCanvas } from '~ui/services/blend-modes/map-figma-blend-to-canvas.ts';
 import {
   type CanvasRect,

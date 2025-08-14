@@ -1,4 +1,5 @@
-import { type PolychromNode } from '~types/common.ts';
+/* eslint-disable @typescript-eslint/no-deprecated */
+import type { PolychromNode } from '~types/common.ts';
 
 export const getNodeFills = (
   node: PageNode | PolychromNode | SceneNode

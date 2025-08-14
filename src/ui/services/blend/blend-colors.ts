@@ -1,5 +1,5 @@
-import { type PolychromNode } from '~types/common.ts';
-import { type FigmaColorSpace } from '~types/figma.ts';
+import type { PolychromNode } from '~types/common.ts';
+import type { FigmaColorSpace } from '~types/figma.ts';
 import { isSupportsOKLCH } from '~ui/constants.ts';
 import { formatColorData } from '~ui/services/blend/format-color-data.ts';
 import { getColorData } from '~ui/services/blend/get-color-data.ts';
@@ -9,7 +9,7 @@ import { renderSvgOnCanvas } from '~ui/services/canvas/render-svg-on-canvas.ts';
 import { findFgAndBgNodes } from '~ui/services/figma/find-fg-and-bg-nodes.ts';
 import { formatPolychromNodeId } from '~ui/services/figma/format-figma-node-id.ts';
 import { drawNodesOnSvg } from '~ui/services/svg/draw-nodes-on-svg.ts';
-import { type ContrastConclusion } from '~ui/types';
+import type { ContrastConclusion } from '~ui/types/index.ts';
 import { calculateApcaScore } from '~utils/apca/calculate-apca-score.ts';
 import { getActualFill } from '~utils/figma/get-actual-fill.ts';
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';

@@ -1,4 +1,4 @@
-import { type FigmaColorSpace } from '~types/figma.ts';
+import type { FigmaColorSpace } from '~types/figma.ts';
 import { isSupportsOKLCH } from '~ui/constants.ts';
 import { CanvasColorSpace } from '~ui/services/blend/blend-colors.ts';
 

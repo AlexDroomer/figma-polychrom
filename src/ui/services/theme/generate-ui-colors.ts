@@ -1,4 +1,4 @@
-import { type UIColor } from '~types/common.ts';
+import type { UIColor } from '~types/common.ts';
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';
 import { calcAPCA } from 'apca-w3';
 import {
@@ -215,7 +215,7 @@ const getThemeWithMaxLc = (themes: Theme[]): null | Theme => {
 
   const max = Math.max(...Lcs);
 
-  const theme = themes.find((theme) => theme.Lc === max);
+  const theme = themes.find((t) => t.Lc === max);
 
   return notEmpty(theme) ? theme : null;
 };

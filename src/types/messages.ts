@@ -1,7 +1,7 @@
-import { type PolychromNode } from '~types/common.ts';
-import { type FigmaColorSpace } from '~types/figma.ts';
+import type { PolychromNode } from '~types/common.ts';
+import type { FigmaColorSpace } from '~types/figma.ts';
 
-import { type ColorSpaceDisplayModes } from '../constants.ts';
+import type { ColorSpaceDisplayModes } from '../constants.ts';
 
 export enum MessageTypes {
   ColorSpaceDisplayModeChange = 'Polychrom_ColorSpaceDisplayModeChange',

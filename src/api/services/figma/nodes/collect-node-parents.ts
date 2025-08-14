@@ -5,8 +5,9 @@ export const collectNodeParents = (
   parents: SceneNode[] = []
 ): SceneNode[] => {
   if (notEmpty(node.parent)) {
-    if (node.parent.type === 'PAGE' || node.parent.type === 'DOCUMENT')
+    if (node.parent.type === 'PAGE' || node.parent.type === 'DOCUMENT') {
       return parents;
+    }
 
     parents.push(node.parent);
 

@@ -1,12 +1,11 @@
+/* eslint-disable perfectionist/sort-objects */
 export const conclusions = {
   'Fluent Text': 90,
-  // eslint-disable-next-line perfectionist/sort-objects
   'Body Text': 75,
   'Content Text': 60,
   'Large Text': 45,
   'Non-Text': 30,
   'Not Readable': 15,
-  // eslint-disable-next-line perfectionist/sort-objects
   Invisible: 0,
 };
 

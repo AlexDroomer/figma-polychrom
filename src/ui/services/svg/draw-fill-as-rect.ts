@@ -1,4 +1,4 @@
-import { type FigmaColorSpace, type FigmaPaint } from '~types/figma.ts';
+import type { FigmaColorSpace, FigmaPaint } from '~types/figma.ts';
 import { mapFigmaBlendToCanvas } from '~ui/services/blend-modes/map-figma-blend-to-canvas.ts';
 import { determineFillStyle } from '~ui/services/blend/determine-fill-style.ts';
 import { isEmpty, notEmpty } from '~utils/not-empty.ts';

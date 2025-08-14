@@ -1,7 +1,7 @@
 import { notEmpty } from '~utils/not-empty.ts';
 import { formatHex, modeRgb, type Oklch, useMode } from 'culori/fn';
 
-import { type ColorSpaceDisplayModes } from '../../constants.ts';
+import type { ColorSpaceDisplayModes } from '../../constants.ts';
 
 const convertToRgb = useMode(modeRgb);
 
